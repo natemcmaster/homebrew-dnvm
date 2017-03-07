@@ -1,9 +1,9 @@
 class Dnvm < Formula
   desc ".NET Core Version Manager"
   homepage "https://github.com/natemcmaster/dnvm"
-  url "https://dnvmtools.blob.core.windows.net/cli/0.1.0/dnvm.osx-64.tar.gz"
-  version "0.1.0"
-  sha256 "d34961c1e2d10479063835d6e43d4ce9d5bdacb598146127670953cbc3a25ccd"
+  url "https://dnvmtools.blob.core.windows.net/cli/0.1.1/dnvm.osx-64.tar.gz"
+  version "0.1.1"
+  sha256 "7a9ab1e6b127086d20095272c5eb1878c903baaabf02bda6750c39161487dd11"
 
   depends_on "openssl"
   depends_on "libyaml"
@@ -20,8 +20,11 @@ class Dnvm < Formula
 
     libexec.install_symlink "#{HOMEBREW_PREFIX}/opt/openssl/lib/libcrypto.1.0.0.dylib"
     libexec.install_symlink "#{HOMEBREW_PREFIX}/opt/openssl/lib/libssl.1.0.0.dylib"
-    ohai 'Installing the latest .NET Core. This may take a few minutes...' 
-    system bin/"dnvm", "--verbose", "install", "sdk", "stable" if build.with?("sdk")
+
+    if build.with?("sdk") 
+      ohai 'Installing the latest .NET Core. This may take a few minutes...' 
+      system bin/"dnvm", "--verbose", "install", "sdk", "stable"
+    end
   end
 
   test do
