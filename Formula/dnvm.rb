@@ -1,15 +1,15 @@
 class Dnvm < Formula
   desc ".NET Core Version Manager"
   homepage "https://github.com/natemcmaster/dnvm"
-  url "https://dnvmtools.blob.core.windows.net/cli/0.1.1/dnvm.osx-64.tar.gz"
-  version "0.1.1"
-  sha256 "7a9ab1e6b127086d20095272c5eb1878c903baaabf02bda6750c39161487dd11"
+  url "https://dnvmtools.blob.core.windows.net/cli/0.1.2/dnvm.osx-x64.0.1.2.tar.gz"
+  version "0.1.2"
+  sha256 "8eca58f6505b2bd19accf492d4d739362ac375a0f06b23443605fd4fa0d5f944"
 
   depends_on "openssl"
   depends_on "libyaml"
 
   option "without-dotnet", "Install DNVM without install the 'dotnet' executable"
-  option "without-sdk", "Install DNVM without installing the latest .NET Core SDK"
+  option "with-sdk", "Install DNVM and install the latest .NET Core SDK"
 
   def install
     cp_r ".", prefix
@@ -21,8 +21,8 @@ class Dnvm < Formula
     libexec.install_symlink "#{HOMEBREW_PREFIX}/opt/openssl/lib/libcrypto.1.0.0.dylib"
     libexec.install_symlink "#{HOMEBREW_PREFIX}/opt/openssl/lib/libssl.1.0.0.dylib"
 
-    if build.with?("sdk") 
-      ohai 'Installing the latest .NET Core. This may take a few minutes...' 
+    if build.with?("sdk")
+      ohai 'Installing the latest .NET Core. This may take a few minutes...'
       system bin/"dnvm", "--verbose", "install", "sdk", "stable"
     end
   end
