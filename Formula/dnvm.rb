@@ -1,9 +1,9 @@
 class Dnvm < Formula
   desc ".NET Core Version Manager"
   homepage "https://github.com/natemcmaster/dnvm"
-  url "https://dnvmtools.blob.core.windows.net/cli/0.1.2/dnvm.osx-x64.0.1.2.tar.gz"
-  version "0.1.2"
-  sha256 "8eca58f6505b2bd19accf492d4d739362ac375a0f06b23443605fd4fa0d5f944"
+  url "https://dnvmtools.blob.core.windows.net/cli/0.2.0/dnvm.osx-x64.0.2.0.tar.gz"
+  version "0.2.0"
+  sha256 "7cdac8ec2851bf9cf5d9b2432fefdb54b36ca928bbdf4cc4dbf049e331bde113"
 
   depends_on "openssl"
   depends_on "libyaml"
